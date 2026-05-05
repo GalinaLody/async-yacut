@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %} 404. Ничего не найдено. {% endblock %}
+{% block content %}
+  <main>
+    <section class="container my-5 px-4">
+      <h1 class="text-center"><span style="color:red">Ya</span>Cut</h1>
+      <p class="text-center my-4">
+        Пу-пу-пу, кажется ничего нет.
+      </p>
+      <p class="text-center my-4">
+        <a href="{{ url_for('views.index_view') }}">Вернуться на главную</a>
+      </p>
+    </section>
+  </main>
+{% endblock %}
