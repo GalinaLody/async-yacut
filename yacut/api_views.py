@@ -1,3 +1,4 @@
+from http import HTTPStatus
 import re
 
 from flask import Blueprint, jsonify, request, url_for
@@ -48,7 +49,7 @@ def create_short_link():
             short_id=url_map.short,
             _external=True
         )
-    }), 201
+    }), HTTPStatus.CREATED
 
 
 @api_bp.route('/<string:short_id>/', methods=['GET'])
@@ -58,5 +59,5 @@ def get_url(short_id):
         short=short_id
     ).first()
     if url_map is None:
-        raise InvalidAPIUsage('Указанный id не найден', 404)
-    return jsonify({'url': url_map.original}), 200
+        raise InvalidAPIUsage('Указанный id не найден', HTTPStatus.NOT_FOUND)
+    return jsonify({'url': url_map.original}), HTTPStatus.OK

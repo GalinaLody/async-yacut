@@ -19,7 +19,7 @@ class InvalidAPIUsage(Exception):
 
     def to_dict(self):
         """Преобразует сообщение об ошибке в словарь JSON."""
-        return dict(message=self.message)
+        return {'message': self.message}
 
 
 @errors_bp.app_errorhandler(InvalidAPIUsage)
@@ -28,7 +28,7 @@ def invalid_api_usage(error):
     return jsonify(error.to_dict()), error.status_code
 
 
-@errors_bp.app_errorhandler(404)
+@errors_bp.app_errorhandler(HTTPStatus.NOT_FOUND)
 def page_not_found(error):
     """При ошибке 404 возвращает кастомную страницу ошибки."""
-    return render_template('404.html'), 404
+    return render_template('404.html'), HTTPStatus.NOT_FOUND

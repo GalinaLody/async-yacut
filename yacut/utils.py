@@ -1,7 +1,9 @@
 import string
 import random
-from .models import URLMap
+
 from .forms import RESERVED_WORD
+from .models import URLMap
+
 
 FORMAT_SHORT_ID = string.ascii_letters + string.digits
 LENGTH_SHORT_ID = 6

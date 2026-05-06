@@ -16,13 +16,13 @@ class URLMap(db.Model):
     }
 
     def to_dict(self):
-        """Преодразует объект модели в словарь для API."""
-        return dict(
-            id=self.id,
-            original=self.original,
-            short=self.short,
-            timestamp=self.timestamp
-        )
+        """Преобразует объект модели в словарь для API."""
+        return {
+            'id': self.id,
+            'original': self.original,
+            'short': self.short,
+            'timestamp': self.timestamp
+        }
 
     def from_dict(self, data):
         """Десериализует данные API-запроса(словарь) в объект модели."""

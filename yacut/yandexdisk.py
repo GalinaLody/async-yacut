@@ -1,20 +1,9 @@
-import os
-import urllib.parse
 import asyncio
+import urllib.parse
+
 import aiohttp
-from dotenv import load_dotenv
 
-
-load_dotenv()
-
-API_HOST = 'https://cloud-api.yandex.net/'
-API_VERSION = 'v1'
-REQUEST_UPLOAD_URL = f'{API_HOST}{API_VERSION}/disk/resources/upload'
-DOWNLOAD_LINK_URL = f'{API_HOST}{API_VERSION}/disk/resources/download'
-DISK_TOKEN = os.environ.get('DISK_TOKEN')
-AUTH_HEADERS = {
-    'Authorization': f'OAuth {DISK_TOKEN}'
-}
+from settings import AUTH_HEADERS, DOWNLOAD_LINK_URL, REQUEST_UPLOAD_URL
 
 
 async def async_upload_files_to_yadisk(files):
